@@ -53,7 +53,7 @@
 %
 \addbibresource{refs.bib}
 
-% tikz stuff
+% tikz graphics stuff
 %
 \tikzposterlatexaffectionproofoff  % remove watermark
 \usetikzlibrary{decorations.pathreplacing, arrows.meta, positioning, calc, shapes.geometric}
@@ -70,18 +70,20 @@
 \definecolor{customsecondary}{RGB}{255,255,255} % White
 \definecolor{customaccentbg}{HTML}{EAEAEA}      % 10% black
 
-% Set and re-define tikzposter theme colors (see https://texdoc.org/serve/tikzposter/0)
+% Set and re-define tikzposter theme colors/component styles (see https://texdoc.org/serve/tikzposter/0)
+% Try changing the `custom*` values around to see how they affect different parts of the poster.
 %
 \colorlet{framecolor}{customaccent}
 \colorlet{backgroundcolor}{customsecondary}
 \colorlet{titlefgcolor}{customsecondary}
-\colorlet{titlebgcolor}{customprimary}
+\colorlet{titlebgcolor}{customprimary}  % try setting this to customprimary to see a fun gradient effect in the title.
 \colorlet{blocktitlefgcolor}{customsecondary}
 \colorlet{blocktitlebgcolor}{customaccent}
 \colorlet{blockbodyfgcolor}{customprimary}
 \colorlet{blockbodybgcolor}{customaccentbg}
 
-
+% Mix and match the below style options to fit the vibe you want for your poster components.
+%
 \usetitlestyle{Envelope}  % Default,Basic,Envelope,Wave,VerticalShading,Filled,Empty
 \usebackgroundstyle{BottomVerticalGradation}  % Default,Rays,VerticalGradation,BottomVerticalGradation,Empty
 \useblockstyle{Basic}  % Default,Basic,Minimal,Envelope,Corner,Slide,TornOut
@@ -100,8 +102,12 @@
 }
 
 \begin{document}
+    % See https://texdoc.org/serve/tikzposter/0 for more information about `titletoblockverticalspace`.
+    %
     \maketitle[titletoblockverticalspace=2.0cm]
 
+    % See https://texdoc.org/serve/tikzposter/0 for more information about how columns and sub-columns are laid out.
+    %
     \begin{columns}
         \column{0.7}
         \begin{subcolumns}
@@ -110,6 +116,10 @@
             {
                 \setcounter{section}{0}
                 \section{The "Why"} 
+               
+                % We use the `multicols` package here to separate text and graphic into a side-by-side layout. The 
+                % `subcolumns` blocks don't seem to nest nicely, else we'd use that.
+                %
                 \begin{multicols}{2}
                 
                     \subsection{Why Hasn't This Been Done?} 
