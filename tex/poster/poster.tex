@@ -1,0 +1,300 @@
+\documentclass[17pt,colspace=23mm,subcolspace=0mm]{tikzposter}
+\geometry{paperwidth=40in,paperheight=30in}
+\makeatletter
+\setlength{\TP@visibletextwidth}{\textwidth-2\TP@innermargin}
+\setlength{\TP@visibletextheight}{\textheight-2\TP@innermargin}
+\makeatother
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[
+    backend=biber,
+    doi=false,
+    eprint=false,
+    isbn=false,
+    sorting=none,
+    style=numeric-comp,
+    url=false,
+]{biblatex}
+\usepackage{bm}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{titlesec}
+
+% Typography Tweaks
+%
+\usepackage{fontspec}
+
+% To use a local font (e.g., https://github.com/alerque/libertinus):
+%
+\setmainfont[
+  Path           = ../../fonts/libertinus/,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Extension      = .otf,
+]{LibertinusSerif}
+
+% Alternatively, if you prefer to use a pre-installed system font:
+%
+% \setmainfont{Libertinus Serif}
+
+% [Optional] Set root graphics directory for images
+%
+\graphicspath{{../images/}}
+
+% [Optional] References
+%
+\addbibresource{refs.bib}
+
+% tikz stuff
+%
+\tikzposterlatexaffectionproofoff  % remove watermark
+\usetikzlibrary{decorations.pathreplacing, arrows.meta, positioning, calc, shapes.geometric}
+
+% Shrink section title padding
+%
+\titlespacing*{\section} {0pt}{0.25cm}{0.25cm}
+
+% See https://identity.stanford.edu/design-elements/color/primary-colors/
+%
+\definecolor{customaccent}{RGB}{140,21,21}      % Cardinal red
+\definecolor{customprimary}{RGB}{46,45,41}      % Black
+\definecolor{customprimarymuted}{RGB}{83,86,90} % Cool gray
+\definecolor{customsecondary}{RGB}{255,255,255} % White
+\definecolor{customaccentbg}{HTML}{EAEAEA}      % 10% black
+
+% Set and re-define tikzposter theme colors (see https://texdoc.org/serve/tikzposter/0)
+%
+\colorlet{framecolor}{customaccent}
+\colorlet{backgroundcolor}{customsecondary}
+\colorlet{titlefgcolor}{customsecondary}
+\colorlet{titlebgcolor}{customprimary}
+\colorlet{blocktitlefgcolor}{customsecondary}
+\colorlet{blocktitlebgcolor}{customaccent}
+\colorlet{blockbodyfgcolor}{customprimary}
+\colorlet{blockbodybgcolor}{customaccentbg}
+
+
+\usetitlestyle{Envelope}  % Default,Basic,Envelope,Wave,VerticalShading,Filled,Empty
+\usebackgroundstyle{BottomVerticalGradation}  % Default,Rays,VerticalGradation,BottomVerticalGradation,Empty
+\useblockstyle{Basic}  % Default,Basic,Minimal,Envelope,Corner,Slide,TornOut
+\useinnerblockstyle{Default}  % Default,Table
+\usenotestyle{Sticky}  % Default,Corner,VerticalShading,Sticky
+
+% Title matter
+%
+\title{The Best Poster Ever: A Template}
+\author{Student McStudentFace$^{\dagger *}$, Advisor McAdvisorFace$^{\dagger\ddagger}$}
+\date{\today}
+\institute{
+    ${^\dagger}$Institute for Students, 
+    $^\ddagger$Department of Really Great Professors
+    \textbar\ The University
+}
+
+\begin{document}
+    \maketitle[titletoblockverticalspace=2.0cm]
+
+    \begin{columns}
+        \column{0.7}
+        \begin{subcolumns}
+            \subcolumn{0.6}
+            \block{Background}
+            {
+                \setcounter{section}{0}
+                \section{The "Why"} 
+                \begin{multicols}{2}
+                
+                    \subsection{Why Hasn't This Been Done?} 
+                    
+                    \begin{itemize}
+                        \renewcommand{\labelitemi}{$\rightarrow$}
+                        \item{
+                            \lipsum[1][1]  % placeholder text
+                        }
+                        \item{
+                            \lipsum[1][2-3]  % placeholder text
+                        }
+                        \item{
+                            \lipsum[1][4-5]  % placeholder text
+                        }
+                    \end{itemize}
+                
+                    \subsection{Why Can We Do It?} 
+           
+                    \lipsum[2][1-8]  % placeholder text
+    
+                    \begin{tikzfigure}[Background Context Graphic]
+                        \includegraphics[width=0.175\textwidth]{example-image-a}
+                    \end{tikzfigure}
+                \end{multicols}
+            }
+
+            \subcolumn{0.4}
+            \block{Inspiration}
+            {
+                \setcounter{section}{1}
+                \section{The "What"} 
+
+                \lipsum[3][2-3]  % placeholder text
+                
+                \subsection{Example}
+               
+
+                \lipsum[4-5]  % placeholder text
+            }
+        \end{subcolumns}
+
+        \begin{subcolumns}
+            \subcolumn{0.4}
+            \block{Theory}
+            {
+                \setcounter{section}{3}
+                \section{The "When"}
+    
+
+                \lipsum[6-9]  % placeholder text
+            }
+
+            \subcolumn{0.6}
+            \block{Implementation}
+            {
+                \setcounter{section}{4}
+                \section{The "How" (Redux)}
+    
+                \subsection{What Worked?}
+
+                \lipsum[10]  % placeholder text
+    
+                \subsection{Why Did That Work?}
+
+                \lipsum[11-13]  % placeholder text
+            }
+            \block{References}
+            {
+                \nocite{*}
+                \printbibliography[heading=none]
+            }
+        \end{subcolumns}
+    
+        \column{0.3}
+        \begin{subcolumns}
+            \subcolumn{1.0}
+            \block{Approach}
+            {
+                \setcounter{section}{2}
+                \section{The "How"}
+        
+                \lipsum[14][1-3]  % placeholder text
+
+                \vspace{0.5cm}
+        
+                \begin{center}
+                    \begin{tikzpicture}[node distance=1.5cm, >=Stealth]
+                        % LHS block
+                        %
+                        \begin{scope}[shift={(0,-1)}]
+                            % Side face
+                            %
+                            \draw[fill=gray!30, draw=black, thick] (3,0) -- (3.5,0.5) -- (3.5,1.5) -- (3,1) -- cycle;
+                            
+                            % Top face
+                            %
+                            \draw[fill=gray!10, draw=black, thick] (0,1) -- (3,1) -- (3.5,1.5) -- (0.5,1.5) -- cycle;
+                            
+                            % Front face
+                            %
+                            \draw[fill=gray!20, draw=black, thick] (0,0) -- (3,0) -- (3,1) -- (0,1) -- cycle;
+                    
+                            % Points
+                            %
+                            % (front)
+                            \fill[black] (0.5,0.5) circle (2pt);
+                            \fill[black] (1.5,0.3) circle (2pt);
+                            \fill[black] (2.5,0.7) circle (2pt);
+                            % (top)
+                            \fill[black] (1, 1.3) circle (2pt);
+                            \fill[black] (2, 1.2) circle (2pt);
+                            
+                            \node[black, font=\small] at (1.5, -0.5) {From this...};
+                        \end{scope}
+                    
+                        \draw[->, line width=1.5pt, black] (5.5, 0) -- (10.5, 0);
+                    
+                        % RHS graph
+                        %
+                        \begin{scope}[shift={(12,0)}]
+                            \draw[black, thin] (0,0) -- (1,1) -- (2,0) -- (1,-1) -- cycle;
+                            \draw[black, thin] (1,1) -- (1,-1);
+                            \draw[black, thin] (0,0) -- (2,0);
+                    
+                            \foreach \n in {(0,0), (1,1), (2,0), (1,-1), (1,0)} {
+                                \fill[black] \n circle (3pt);
+                            }
+                            
+                            \node[black, font=\small] at (1, -1.5) {...to this!};
+                        \end{scope}
+                    \end{tikzpicture}
+                \end{center}
+               
+                \lipsum[15]  % placeholder text
+            }
+    
+            \block{Results}
+            {
+                \setcounter{section}{5}
+                \section{What We're Publishing}
+
+                \vspace{0.5cm}
+    
+                \lipsum[16]1-4]  % placeholder text
+    
+                \begin{tikzfigure}[How we hoped it'd go]
+                    \includegraphics[width=0.115\textwidth]{example-image-b}
+                \end{tikzfigure}
+    
+                \lipsum[16][5-9]  % placeholder text
+    
+                \begin{tikzfigure}[How it really went]
+                    \includegraphics[width=0.115\textwidth]{example-image-c}
+                \end{tikzfigure}
+
+                \lipsum[16][8-10]  % placeholder text
+            }
+        \end{subcolumns}
+
+    \end{columns}
+
+    % Footer
+    %
+    \coordinate (topleft)     at (topright -| bottomleft);
+    \coordinate (bottomright) at (topright |- bottomleft);
+    \node [
+       above right,
+       outer sep=0pt,
+       draw=none,
+       text=customsecondary
+    ] at ([shift={(1.6cm,1.0cm)}]bottomleft) {
+        \ttfamily\large
+        Research Grant McGrant No. 123456
+    };
+
+    \node [
+       above left,
+       outer sep=0pt,
+       draw=none,
+       text=customsecondary
+    ] at ([shift={(-1.6cm,1.0cm)}]bottomright) {
+        \large\ttfamily 
+        $^*$Corresponding author: 
+
+        student@university.edu
+    };
+\end{document}
